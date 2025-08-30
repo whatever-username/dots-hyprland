@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+# Editing Policy
+
+- Only modify files in this repo. Do not change files in $HOME or system paths unless explicitly asked.
+- Prefer zsh as the interactive shell in terminal configs (e.g., Kitty), avoid forcing fish.
+- When altering terminal launch binds, do not wrap commands with `fish -c`; rely on the terminal's default shell.
+- Preserve existing indentation and formatting; keep edits minimal and localized.
+- Before changing generated/copied config, prefer updating the source files in [.config/](mdc:.config/) so downstream installs inherit the behavior.

@@ -1,0 +1,20 @@
+---
+alwaysApply: true
+---
+# Repo Structure
+
+- Top-level docs: [README.md](mdc:README.md), [CONTRIBUTING.md](mdc:CONTRIBUTING.md), [LICENSE](mdc:LICENSE)
+- Install scripts: [install.sh](mdc:install.sh), [update.sh](mdc:update.sh), [uninstall.sh](mdc:uninstall.sh)
+- Script data and deps: [scriptdata/](mdc:scriptdata/)
+- Arch packages (PKGBUILDs, prebuilt pkgs): [arch-packages/](mdc:arch-packages/)
+- User configs copied to $XDG_CONFIG_HOME: [.config/](mdc:.config/)
+  - Hyprland config: [.config/hypr/hyprland/](mdc:.config/hypr/hyprland/)
+  - Kitty: [.config/kitty/kitty.conf](mdc:.config/kitty/kitty.conf)
+  - Quickshell: [.config/quickshell/](mdc:.config/quickshell/)
+
+# Entry points
+
+- Hyprland loads [hyprland.conf](mdc:.config/hypr/hyprland.conf), which includes files from [.config/hypr/hyprland/](mdc:.config/hypr/hyprland/)
+- Keybinds: [.config/hypr/hyprland/keybinds.conf](mdc:.config/hypr/hyprland/keybinds.conf)
+- Autostart: [.config/hypr/hyprland/execs.conf](mdc:.config/hypr/hyprland/execs.conf)
+- Kitty defaults: [.config/kitty/kitty.conf](mdc:.config/kitty/kitty.conf)

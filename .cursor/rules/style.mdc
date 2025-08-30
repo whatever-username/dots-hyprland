@@ -1,0 +1,21 @@
+---
+globs: *.sh,*.conf,*.qml,*.fish
+---
+# Style and Conventions
+
+## Shell scripts (*.sh)
+- Use bash; add `#!/usr/bin/env bash` when creating new scripts.
+- Strict mode when reasonable: `set -Eeuo pipefail`.
+- Use long flags; avoid command aliases.
+- Quote variable expansions and paths.
+
+## Kitty/Hyprland/INI-like (*.conf)
+- Keep key/value on single lines; preserve spacing.
+- Avoid hardcoding shells; prefer terminal defaults or `/usr/bin/zsh` if required.
+
+## QML (*.qml)
+- Favor clear property names; no inline comments inside JSON-like blocks.
+- Keep components small; extract to modules under `.config/quickshell/ii/modules/` when reused.
+
+## fish (*.fish)
+- Do not introduce new fish-only bindings; provide POSIX-compatible alternatives where possible.
