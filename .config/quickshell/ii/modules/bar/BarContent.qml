@@ -109,17 +109,19 @@ Item { // Bar content region
 
         BarGroup {
             id: leftCenterGroup
-            Layout.preferredWidth: root.centerSideModuleWidth
+            stretchHorizontally: false
             Layout.fillHeight: false
 
             Resources {
                 alwaysShowAllResources: root.useShortenedForm === 2
-                Layout.fillWidth: root.useShortenedForm === 2
+                Layout.fillWidth: false
             }
 
             Media {
                 visible: root.useShortenedForm < 2
-                Layout.fillWidth: true
+                Layout.fillWidth: false
+                Layout.preferredWidth: implicitWidth
+                Layout.minimumWidth: implicitWidth
             }
         }
 
@@ -156,7 +158,6 @@ Item { // Bar content region
             id: rightCenterGroup
             implicitWidth: rightCenterGroupContent.implicitWidth
             implicitHeight: rightCenterGroupContent.implicitHeight
-            Layout.preferredWidth: root.centerSideModuleWidth
 
             onPressed: {
                 GlobalStates.sidebarRightOpen = !GlobalStates.sidebarRightOpen;
@@ -164,6 +165,7 @@ Item { // Bar content region
 
             BarGroup {
                 id: rightCenterGroupContent
+                stretchHorizontally: false
                 anchors.fill: parent
 
                 ClockWidget {

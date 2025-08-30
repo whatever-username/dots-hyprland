@@ -51,6 +51,7 @@ Item {
         ClippedFilledCircularProgress {
             id: mediaCircProg
             Layout.alignment: Qt.AlignVCenter
+            Layout.leftMargin: 0
             lineWidth: Appearance.rounding.unsharpen
             value: activePlayer?.position / activePlayer?.length
             implicitSize: 20
@@ -73,13 +74,13 @@ Item {
         }
 
         StyledText {
-            visible: Config.options.bar.verbose && GlobalStates.mediaControlsOpen
-            width: rowLayout.width - (CircularProgress.size + rowLayout.spacing * 2)
+            visible: false
+            width: 0
             Layout.alignment: Qt.AlignVCenter
-            Layout.fillWidth: true // Ensures the text takes up available space
-            Layout.rightMargin: rowLayout.spacing
+            Layout.fillWidth: false
+            Layout.rightMargin: 0
             horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideRight // Truncates the text on the right
+            elide: Text.ElideRight
             color: Appearance.colors.colOnLayer1
             text: `${cleanedTitle}${activePlayer?.trackArtist ? ' • ' + activePlayer.trackArtist : ''}`
         }
