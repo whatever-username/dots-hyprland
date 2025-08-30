@@ -260,6 +260,40 @@ Item { // Player instance
                                 value: playerController.player?.position / playerController.player?.length
                                 sperm: playerController.player?.isPlaying
                             }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                acceptedButtons: Qt.LeftButton
+
+                                function seekTo(mouseX) {
+                                    const w = width > 0 ? width : 1;
+                                    const clampedX = Math.max(0, Math.min(mouseX, w));
+                                    const len = Number(playerController.player?.length) || 0;
+                                    const seconds = Math.max(0, Math.min(len, (clampedX / w) * len));
+                                    if (!isNaN(seconds) && isFinite(seconds) && len > 0) {
+                                        // playerctl expects absolute seconds for 'position'
+                                        seekProc.command = ["bash", "-lc", `playerctl position ${seconds.toFixed(1)}`];
+                                        seekProc.running = true;
+                                    }
+                                }
+
+                                onClicked: (mouse) => {
+                                    seekTo(mouse.x);
+                                }
+
+                                onPressed: (mouse) => {
+                                    seekTo(mouse.x);
+                                }
+
+                                onPositionChanged: (mouse) => {
+                                    if (pressed) seekTo(mouse.x);
+                                }
+                            }
+
+                            Process {
+                                id: seekProc
+                            }
                         }
                         TrackChangeButton {
                             iconName: "skip_next"
